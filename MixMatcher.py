@@ -10,6 +10,7 @@ from tkinter import filedialog
 TARGET_SR = 44100
 FRAGMENT_SECONDS = 30
 TARGET_LUFS = -23.0
+SEED = 42
 meter = pyln.Meter(TARGET_SR)
 
 
@@ -112,7 +113,7 @@ def main():
 
     result = differential_evolution(
         lambda p: objective(p, input_5_1, reference, temp_out),
-        bounds, maxiter=100, polish=True, tol=1e-6
+        bounds, maxiter=100, polish=True, tol=1e-6, seed=SEED
     )
 
     if result.success:
